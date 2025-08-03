@@ -1,0 +1,349 @@
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: #000;
+    color: #fff;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Fondo de estrellas animadas */
+.stars-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.stars, .stars2, .stars3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+.stars {
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+        radial-gradient(2px 2px at 40px 70px, #fff, transparent),
+        radial-gradient(1px 1px at 90px 40px, #eee, transparent),
+        radial-gradient(1px 1px at 130px 80px, #fff, transparent),
+        radial-gradient(2px 2px at 160px 30px, #eee, transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: zoom 20s infinite;
+    opacity: 0;
+}
+
+.stars2 {
+    background-image: 
+        radial-gradient(1px 1px at 40px 60px, #fff, transparent),
+        radial-gradient(1px 1px at 120px 50px, #eee, transparent),
+        radial-gradient(1px 1px at 160px 90px, #fff, transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: zoom 10s infinite;
+    opacity: 0;
+}
+
+.stars3 {
+    background-image: 
+        radial-gradient(1px 1px at 10px 10px, #fff, transparent),
+        radial-gradient(1px 1px at 150px 150px, #eee, transparent),
+        radial-gradient(1px 1px at 60px 170px, #fff, transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: zoom 15s infinite;
+    opacity: 0;
+}
+
+@keyframes zoom {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Contenedor principal */
+.main-container {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: radial-gradient(ellipse at center, rgba(0,20,40,0.3) 0%, rgba(0,0,0,0.8) 100%);
+    width: 100%;
+    transition: opacity 1s ease, filter 1s ease;
+}
+
+/* Título principal */
+.title-container {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeInGlow 3s ease-in-out;
+}
+
+.main-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff, #06ffa5);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 4s ease-in-out infinite;
+    text-shadow: 0 0 30px rgba(255, 0, 110, 0.5);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #06ffa5;
+    text-shadow: 0 0 10px rgba(6, 255, 165, 0.7);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+@keyframes fadeInGlow {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Contenedor de diálogo */
+.dialogue-container {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 40px;
+}
+
+.dialogue-box {
+    background: rgba(0, 20, 40, 0.8);
+    border: 2px solid #06ffa5;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 
+        0 0 20px rgba(6, 255, 165, 0.3),
+        inset 0 0 20px rgba(6, 255, 165, 0.1);
+    position: relative;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+}
+
+.dialogue-text {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    flex: 1;
+}
+
+.dialogue-cursor {
+    color: #06ffa5;
+    font-size: 1.4rem;
+    animation: blink 1s infinite;
+    margin-left: 5px;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Controles de música */
+.music-controls {
+    margin-bottom: 30px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.music-controls.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.play-button {
+    background: linear-gradient(45deg, #ff006e, #8338ec);
+    border: none;
+    border-radius: 50px;
+    padding: 15px 30px;
+    color: white;
+    font-size: 1.1rem;
+    font-family: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(255, 0, 110, 0.4);
+}
+
+.play-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(255, 0, 110, 0.6);
+}
+
+.play-button:active {
+    transform: scale(0.95);
+}
+
+.music-info {
+    max-width: 400px;
+    margin: 0 auto;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.music-info.visible {
+    opacity: 1;
+}
+
+.song-title {
+    color: #06ffa5;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff006e, #06ffa5);
+    width: 0%;
+    transition: width 0.1s ease;
+}
+
+/* Contenedor de letras */
+.lyrics-container {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lyrics-text {
+    font-size: 1.5rem;
+    line-height: 1.8;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.lyrics-text.visible {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+/* --- ESTILOS AÑADIDOS PARA LA TARJETA SORPRESA --- */
+.main-container.dimmed {
+    opacity: 0.3;
+    filter: blur(8px);
+}
+
+.final-card {
+    position: absolute;
+    z-index: 10;
+    background: rgba(0, 10, 20, 0.9);
+    border: 2px solid #ff006e;
+    border-radius: 15px;
+    padding: 30px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 0 40px rgba(255, 0, 110, 0.6);
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 1s ease, transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none; /* Evita interacción mientras está oculto */
+}
+
+.final-card.visible {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: all;
+}
+
+.final-card p {
+    font-size: 1.2rem;
+    color: #eee;
+}
+
+.final-card .card-title {
+    font-size: 2.2rem;
+    color: #ff006e;
+    text-shadow: 0 0 20px rgba(255, 0, 110, 0.8);
+    margin: 15px 0;
+}
+
+.final-card .card-heart {
+    font-size: 3rem;
+    display: block;
+    color: #06ffa5;
+    margin-top: 15px;
+    animation: pulse 1.5s infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-title { font-size: 2.5rem; }
+    .dialogue-text, .dialogue-cursor { font-size: 1.2rem; }
+    .dialogue-box { padding: 20px; min-height: 120px; }
+    .lyrics-text { font-size: 1.3rem; }
+}
+
+@media (max-width: 480px) {
+    .main-title { font-size: 2rem; }
+    .subtitle { font-size: 1rem; }
+    .dialogue-text, .dialogue-cursor { font-size: 1rem; }
+    .main-container { padding: 15px; }
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi Julieta ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Fondo de estrellas (usando tu estructura) -->
+    <div class="stars-container">
+        <div class="stars"></div>
+        <div class="stars2"></div>
+        <div class="stars3"></div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="main-container" id="main-container">
+        <!-- Título principal -->
+        <div class="title-container">
+            <h1 class="main-title">Para mi Julieta</h1>
+            <div class="subtitle">De tu Romeo que te ama</div>
+        </div>
+
+        <!-- Contenedor de diálogo -->
+        <div class="dialogue-container">
+            <div class="dialogue-box">
+                <div class="dialogue-text" id="dialogue-text"></div>
+                <div class="dialogue-cursor" id="dialogue-cursor">▋</div>
+            </div>
+        </div>
+
+        <!-- Controles de música (se harán visibles con JS) -->
+        <div class="music-controls" id="music-controls">
+            <button class="play-button" id="play-button">
+                <span class="play-icon" id="play-icon">▶</span>
+                <span id="button-text">Reproducir la canción</span>
+            </button>
+            <div class="music-info" id="music-info">
+                <div class="song-title" id="song-title">Cargando...</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenedor de letras -->
+        <div class="lyrics-container" id="lyrics-container">
+            <p class="lyrics-text" id="lyrics-text"></p>
+        </div>
+    </div>
+
+    <!-- Tarjeta de sorpresa final -->
+    <div class="final-card" id="final-card">
+        <div class="card-content">
+            <p>Y esto, mi vida...</p>
+            <h2 class="card-title">Es solo el comienzo.</h2>
+            <span class="card-heart"><3</span>
+        </div>
+    </div>
+
+    <!-- Audio Player -->
+    <audio id="audio-player" preload="auto">
+        <source src="_¿Acaso no te has dado cuenta_ de lo bien que me complementas_ - (Letra_Lyrics)(M4A_128K).mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
